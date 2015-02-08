@@ -3,7 +3,7 @@
 #
 # See LICENSE file for copyright and license details
 
-version=0.10.41
+version=0.10.42
 
 #Raspi-LTSP
 #Pi_LTSP
@@ -646,7 +646,7 @@ ltsp-chroot --arch armhf apt-get install -y ssh locales less fbset sudo psmisc s
 ltsp-chroot --arch armhf apt-get install -y python3-rpi.gpio python-rpi.gpio python-pip python-picamera python3-picamera x2x wolfram-engine xserver-xorg-video-fbturbo netsurf-common netsurf-gtk rpi-update
 ltsp-chroot --arch armhf apt-get install -y ftp libraspberrypi-bin python3-pifacecommon python3-pifacedigitalio python3-pifacedigital-scratch-handler python-pifacecommon python-pifacedigitalio i2c-tools linux-image-rpi-rpfv man-db
 ltsp-chroot --arch armhf apt-get install -y --no-install-recommends cifs-utils midori lxtask
-ltsp-chroot --arch armhf apt-get install -y minecraft-pi python-smbus dosfstools ruby
+ltsp-chroot --arch armhf apt-get install -y python-smbus dosfstools ruby
 ltsp-chroot --arch armhf apt-get install -y gstreamer1.0-x gstreamer1.0-omx gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-alsa gstreamer1.0-libav
 ltsp-chroot --arch armhf apt-get install --no-install-recommends -y epiphany-browser cgroup-bin
 ltsp-chroot apt-get install -y java-common oracle-java8-jdk apt-utils wpasupplicant wireless-tools firmware-atheros firmware-brcm80211 firmware-libertas firmware-ralink firmware-realtek libpng12-dev
@@ -1963,7 +1963,7 @@ installKernelUpdater(){
 }
 
 InstallRaspberryPiUIMods(){
-		ltsp-chroot apt-get install -y raspberrypi-ui-mods 
+		ltsp-chroot apt-get install -y raspberrypi-artwork raspberrypi-ui-mods 
 		$p replaceLineOrAdd /opt/ltsp/armhf/etc/xdg/pcmanfm/LXDE-pi/pcmanfm.conf wallpaper_mode=3 wallpaper_mode=stretch
 		$p replaceLineOrAdd /opt/ltsp/armhf/etc/xdg/pcmanfm/LXDE-pi/pcmanfm.conf wallpaper=/usr/share/raspberrypi-artwork/raspberry-pi-logo-small.png wallpaper=/etc/alternatives/desktop-background
 }
