@@ -3,7 +3,7 @@
 #
 # See LICENSE file for copyright and license details
 
-version=0.10.42
+version=0.10.43
 
 #Raspi-LTSP
 #Pi_LTSP
@@ -1911,7 +1911,7 @@ InstallBlueJ(){
 
 checkPythonFunctionsInstalled(){
 	if [ ! -f $PythonFunctions ]; then
-		wget https://raw.githubusercontent.com/gbaman/RaspberryPi-LTSP/master/Scripts/Pi_ltsp-functions-python.py -O $PythonFunctions
+		wget https://raw.githubusercontent.com/KKSComputing/RPI-Server/master/Scripts/Pi_ltsp-functions-python.py -O $PythonFunctions
 		if [ ! $? -eq 0 ]; then 
 			whiptail --title "Error!" --msgbox "I am sorry, there has been a critical error with Raspi-LTSP. A required library file could not be acquired. Raspi-LTSP is unable to function without this library. This may be because you are not connected to the internet or there may be another problem.
 Please manually download the file from http://bit.ly/14aU4u1 and copy it to $PythonFunctions
