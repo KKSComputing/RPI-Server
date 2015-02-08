@@ -1584,7 +1584,7 @@ local CPU=$(bc <<< "scale=0; $(top -bn 1 | awk '{print $9}' | tail -n +8 | awk '
 clear
 
 IP=`ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'`
-echo "           RaspberryPi-LTSP System Status"
+echo "           KKS Pi Server System Status"
 echo "---------------------------------------------------"
 echo "Current version                        - $version"
 echo "Server IP address                      - $IP"
@@ -2500,7 +2500,7 @@ FullInstall(){
 Menu() {
 IP=`ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'`
 
-  MENUOPT=$(whiptail --title "Raspi-LTSP $version Main Menu - $IP" --cancel-button "Quit" --ok-button "Select" --menu "What would you like to do?" 22 80 14 \
+  MENUOPT=$(whiptail --title "KKS Raspberry Pi Server $version Main Menu - $IP" --cancel-button "Quit" --ok-button "Select" --menu "What would you like to do?" 22 80 14 \
   	"System-Status" "Display status of key parts of your Raspi-LTSP server" \
   	"Install-Program" "Install a new program on the Raspberry Pi's" \
     "Manage-Users" "Add new users, change passwords and delete users" \
