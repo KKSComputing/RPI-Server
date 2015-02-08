@@ -56,13 +56,7 @@ LegacyFixes() {
 	if [ -f "/etc/default/epoptes" ]; then
 		ReplaceTextLine "/etc/default/epoptes" "SOCKET_GROUP=staff" "SOCKET_GROUP=teacher"
 	fi
-	ReplaceTextLine "/etc/sudoers.d/01staff" "%staff ALL=NOPASSWD: ALL" "%teacher ALL=NOPASSWD: ALL"
-	
-	if [ ! -f "/opt/ltsp/armhf/usr/local/bin/Raspi-ltsp-screenshot.sh" ]; then
-		AddScreenshot
-		UpdateConfig NBDBuildNeeded true
-	fi
-	
+	ReplaceTextLine "/etc/sudoers.d/01staff" "%staff ALL=NOPASSWD: ALL" "%teacher ALL=NOPASSWD: ALL"		
 	if [ ! -f "/usr/local/bin/changePassword.sh" ]; then
 		AddPasswordReset
 		UpdateConfig NBDBuildNeeded true
