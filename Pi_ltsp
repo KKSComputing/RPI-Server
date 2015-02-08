@@ -3,7 +3,7 @@
 #
 # See LICENSE file for copyright and license details
 
-version=0.10.43
+version=0.10.44
 
 #Raspi-LTSP
 #Pi_LTSP
@@ -571,12 +571,12 @@ whiptail --title "Install complete" --msgbox "The client install is complete, a 
 RaspiTheme(){
 #Grabs a copy of the custom Raspberry Pi login screen and applies it
 
-rm -rf RaspberryPi-LTSP
+rm -rf RPI-Server
 git clone --depth 1 https://github.com/KKSComputing/RPI-Server.git
-cp -r RaspberryPi-LTSP/themes/raspi /opt/ltsp/armhf/usr/share/ldm/themes/raspi
+cp -r RPI-Server/themes/raspi /opt/ltsp/armhf/usr/share/ldm/themes/raspi
 rm /opt/ltsp/armhf/etc/alternatives/ldm-theme
 ln -s /usr/share/ldm/themes/raspi /opt/ltsp/armhf/etc/alternatives/ldm-theme
-rm -rf RaspberryPi-LTSP
+rm -rf RPI-Server
 cp /opt/ltsp/armhf/usr/share/ldm/themes/raspi/bg.png /opt/ltsp/armhf/usr/share/images/desktop-base/raspi-LTSP.png
 sudo ltsp-chroot --arch armhf update-alternatives --install /usr/share/images/desktop-base/desktop-background desktop-background /usr/share/images/desktop-base/raspi-LTSP.png 100
 
