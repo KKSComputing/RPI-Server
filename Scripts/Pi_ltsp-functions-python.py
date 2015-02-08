@@ -1,5 +1,5 @@
 #! /usr/bin/env python3
-# Part of Raspi-LTSP https://github.com/gbaman/RaspberryPi-LTSP
+# Part of Raspi-LTSP https://github.com/KKSComputing/RPI-Server
 #
 # See LICENSE file for copyright and license details
 
@@ -260,8 +260,8 @@ def updatePiLTSP():
     try:
         os.remove("/home/"+os.environ['SUDO_USER']+"/Pi_ltsp")
     except: pass
-    downloadFile("http://bit.ly/piltspupdate", "/usr/local/bin/Pi_ltsp")
-    downloadFile("https://raw.githubusercontent.com/gbaman/RaspberryPi-LTSP/master/Scripts/Pi_ltsp-functions-python.py", "/usr/local/bin/Pi_ltsp-functions-python.py")
+    downloadFile("https://raw.githubusercontent.com/KKSComputing/RPI-Server/master/Pi_ltsp", "/usr/local/bin/Pi_ltsp")
+    downloadFile("https://raw.githubusercontent.com/KKSComputing/RPI-Server/master/Scripts/Pi_ltsp-functions-python.py", "/usr/local/bin/Pi_ltsp-functions-python.py")
     print(0)
 
 
@@ -270,7 +270,7 @@ def checkUpdate():
     Grabs the xml commit log to check for releases. Picks out most recent release and returns it.
     """
     loc = "/tmp/raspiupdate.txt"
-    downloadFile("http://bit.ly/piltspcheckmaster", loc)
+    downloadFile("https://github.com/KKSComputing/RPI-Server/commits/master.atom", loc)
     from xml.dom import minidom
     xmldoc = minidom.parse(loc)
     version = xmldoc.getElementsByTagName('title')[1].firstChild.nodeValue
@@ -283,7 +283,7 @@ def checkUpdate():
         print("No release update found!")
 
 def checkKernelFileUpdateWeb():
-    downloadFile("https://raw.githubusercontent.com/gbaman/RaspberryPi-LTSP/master/boot/version.txt", "/tmp/kernelVersion.txt")
+    downloadFile("https://raw.githubusercontent.com/KKSComputing/RPI-Server/master/boot/version.txt", "/tmp/kernelVersion.txt")
     import os.path
     user=os.environ['SUDO_USER']
     currentPath="/home/"+user+"/piBoot/version.txt"
@@ -300,7 +300,7 @@ def checkKernelFileUpdateWeb():
         print("0")
 
 def checkKernelUpdater():
-    downloadFile("https://raw.githubusercontent.com/gbaman/RaspberryPi-LTSP/master/Scripts/kernelCheckUpdate.sh", "/tmp/kernelCheckUpdate.sh")
+    downloadFile("https://raw.githubusercontent.com/KKSComputing/RPI-Server/master/Scripts/kernelCheckUpdate.sh", "/tmp/kernelCheckUpdate.sh")
 
     import os.path
     if os.path.isfile("/opt/ltsp/armhf/etc/init.d/kernelCheckUpdate.sh"):
