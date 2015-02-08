@@ -2359,6 +2359,12 @@ case "$MENUEPT" in
 esac
 } #***************************************************************************************************
 
+KKSConfiguration() {
+	ltsp-chroot --arch armhf echo "HTTP_PROXY=172.19.0.1:3128" >> /etc/environment
+	ltsp-chroot --arch armhf echo "http_proxy=172.19.0.1:3128" >> /etc/environment
+
+}
+
 ExtraSoftware() {
 
 if [ $(checkInternet) -eq 0 ]; then
