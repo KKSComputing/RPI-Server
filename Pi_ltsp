@@ -1,5 +1,5 @@
 #!/bin/bash
-# Part of Raspi-LTSP https://github.com/gbaman/RaspberryPi-LTSP
+# Part of Raspi-LTSP https://github.com/KKSComputing/RPI-Server
 #
 # See LICENSE file for copyright and license details
 
@@ -322,7 +322,7 @@ if [ $Internet -eq 0 ]; then
 		mkdir /opt/raspiLTSP/PiBootBackup
 	fi
 	rm -rf /tmp/PiBoot
-	git clone --depth 1 https://github.com/gbaman/RaspberryPi-LTSP.git /tmp/PiBoot #Clones main repository, including boot files
+	git clone --depth 1 https://github.com/KKSComputing/RPI-Server.git /tmp/PiBoot #Clones main repository, including boot files
 	rm -rf /opt/raspiLTSP/PiBootBackup/*
 	cp /tmp/PiBoot/boot/* /opt/raspiLTSP/PiBootBackup/
 	UpdateIP
@@ -578,7 +578,7 @@ RaspiTheme(){
 #Grabs a copy of the custom Raspberry Pi login screen and applies it
 
 rm -rf RaspberryPi-LTSP
-git clone --depth 1 https://github.com/gbaman/RaspberryPi-LTSP.git
+git clone --depth 1 https://github.com/KKSComputing/RPI-Server.git
 cp -r RaspberryPi-LTSP/themes/raspi /opt/ltsp/armhf/usr/share/ldm/themes/raspi
 rm /opt/ltsp/armhf/etc/alternatives/ldm-theme
 ln -s /usr/share/ldm/themes/raspi /opt/ltsp/armhf/etc/alternatives/ldm-theme
@@ -1059,7 +1059,7 @@ fi
 TroubleShooter(){
 
 	whiptail --title "Troubleshooter" --msgbox "Welcome to Raspi-LTSP troubleshooter. The troubleshooter goes over a few possible issues you may be having with your setup and offers advice.
-	WARNING - This troubleshooter is experimental, feel free to open issue reports at https://github.com/gbaman/RaspberryPi-LTSP/issues if you have any additional issues." 16 78
+	WARNING - This troubleshooter is experimental, feel free to open issue reports at https://github.com/KKSComputing/RPI-Server/issues if you have any additional issues." 16 78
 	whiptail --title "Boot" --yesno "Have you got as far as your Raspberry Pi starting up?" 8 78
 	if [ $? -eq 0 ]; then
 		whiptail --title "Login screen" --yesno "Have you got as far as the login screen displaying?" 8 78
@@ -1069,7 +1069,7 @@ TroubleShooter(){
 				whiptail --title "Login" --msgbox "LDM (login screen) does not handle incorrect passwords very well. If you enter an incorrect set of credentials, it just restarts itself. Don't worry about this.
 				If you are unsure about your password, remember you can easily change it in the Manage-users submenu" 16 78
 			else
-				whiptail --title "???" --msgbox "I am not aware of any other issues in this area. Please create a support ticket at https://github.com/gbaman/RaspberryPi-LTSP/issues" 8 78
+				whiptail --title "???" --msgbox "I am not aware of any other issues in this area. Please create a support ticket at https://github.com/KKSComputing/RPI-Server/issues" 8 78
 			fi
 		else
 			resetAndCleanup
@@ -1088,7 +1088,7 @@ TroubleShooter(){
 					if [ $? -eq 0 ]; then
 						whiptail --title "Giving up" --msgbox "This usually means the Raspberry Pi isn't physically connected to the network, check the ethernet cable is correctly plugged in (wifi is not supported) and is connected to your main switch." 16 78
 					else
-						whiptail --title "???" --msgbox "I am not aware of any other issues in this area. Please create a support ticket at https://github.com/gbaman/RaspberryPi-LTSP/issues" 8 78		
+						whiptail --title "???" --msgbox "I am not aware of any other issues in this area. Please create a support ticket at https://github.com/KKSComputing/RPI-Server/issues" 8 78		
 					fi
 				fi
 			fi
@@ -1101,10 +1101,10 @@ TroubleShooter(){
 				whiptail --title "Formating partitions" --msgbox "When flashing Raspbian or another Raspberry Pi operating system onto SD cards, a number of partitions are created. Raspi-LTSP only needs a single partition, the boot partition.
 				This is usually a small (~50mb) partition which is formatted as fat32. If you wish to format the entire SD card (which if you are having issues, you may want to), please refer to the userguide section on formatting SD cards. " 16 78	
 			else
-				whiptail --title "???" --msgbox "I am not aware of any other issues in this area. Please create a support ticket at https://github.com/gbaman/RaspberryPi-LTSP/issues" 8 78	
+				whiptail --title "???" --msgbox "I am not aware of any other issues in this area. Please create a support ticket at https://github.com/KKSComputing/RPI-Server/issues" 8 78	
 			fi
 		else
-			whiptail --title "???" --msgbox "I am not aware of any other issues in this area. Please create a support ticket at https://github.com/gbaman/RaspberryPi-LTSP/issues" 8 78
+			whiptail --title "???" --msgbox "I am not aware of any other issues in this area. Please create a support ticket at https://github.com/KKSComputing/RPI-Server/issues" 8 78
 		fi
 	fi
 }
@@ -1176,7 +1176,7 @@ $newVersion" 8 78
 
 UpdaterOld(){
 	rm -rf /tmp/Pi_ltsp > /dev/null 2>&1
-	#wget https://raw.github.com/gbaman/RaspberryPi-LTSP/master/Pi_ltsp -O /tmp/Pi_ltsp
+	#wget https://raw.github.com/KKSComputing/RPI-Server/master/Pi_ltsp -O /tmp/Pi_ltsp
 	wget --content-disposition http://pi-ltsp.net/downloadalpha -O /tmp/Pi_ltsp
 	exitstatus=$($p updatePiLTSP)
 	if [ $? -eq 0 ]; then 
@@ -1228,7 +1228,7 @@ xml2 -v > /dev/null 2>&1
 if [ $? -eq 2 ]; then 
 	#echo downloading
 	rm -f /tmp/master.atom > /dev/null 2>&1
-	wget https://github.com/gbaman/RaspberryPi-LTSP/commits/master.atom -O /tmp/master.atom > /dev/null 2>&1
+	wget https://github.com/KKSComputing/RPI-Server/commits/master.atom -O /tmp/master.atom > /dev/null 2>&1
 	if [ $? -eq 0 ]; then
 		checkRelease=$(xml2 < /tmp/master.atom  | grep /feed/entry/title= | sed 's/.*=//' | sed 's/^ *//; s/ *$//; /^$/d' | head -n 1)
 		checkVersion=$(cut -d " " -f 2 <<< "$checkRelease")
@@ -1634,7 +1634,7 @@ if [ $(checkInternet) -eq 0 ]; then
 	AddDesktopShortcutToUser $SUDO_USER
 
 	if [ ! -f "/usr/share/pixmaps/Pi-ltsp-icon.png" ]; then
-		wget https://raw.github.com/gbaman/RaspberryPi-LTSP/master/images/Pi-ltsp-icon.png
+		wget https://github.com/KKSComputing/RPI-Server/master/images/Pi-ltsp-icon.png
 		mv Pi-ltsp-icon.png /usr/share/pixmaps/Pi-ltsp-icon.png
 	fi
 
@@ -1681,8 +1681,8 @@ sudo service nbd-server restart
 }
 
 AddPasswordReset(){
-	wget https://raw.github.com/gbaman/RaspberryPi-LTSP/master/Scripts/changePassword.sh -O /tmp/changePassword.sh
-	wget https://raw.github.com/gbaman/RaspberryPi-LTSP/master/images/Pi-ltsp-change-password.png -O /tmp/Pi-ltsp-change-password.png
+	wget https://raw.github.com/KKSComputing/RPI-Server/master/Scripts/changePassword.sh -O /tmp/changePassword.sh
+	wget https://raw.github.com/KKSComputing/RPI-Server/master/images/Pi-ltsp-change-password.png -O /tmp/Pi-ltsp-change-password.png
 	cp /tmp/Pi-ltsp-change-password.png /opt/ltsp/armhf/usr/share/pixmaps/Pi-ltsp-change-password.png
 	cp /tmp/changePassword.sh /usr/local/bin/changePassword.sh
 	cut -d: -f1,3 /etc/passwd | egrep ':[0-9]{4}$' | cut -d: -f1 | while IFS= read -r user
@@ -1728,8 +1728,8 @@ fi
 }
 
 AddScreenshot(){
-	wget https://raw.github.com/gbaman/RaspberryPi-LTSP/master/Scripts/Raspi-ltsp-screenshot.sh -O /tmp/Raspi-ltsp-screenshot.sh
-	wget https://raw.github.com/gbaman/RaspberryPi-LTSP/master/images/Pi-ltsp-screenshot.png -O /tmp/Pi-ltsp-screenshot.png
+	wget https://raw.github.com/KKSComputing/RPI-Server/master/Scripts/Raspi-ltsp-screenshot.sh -O /tmp/Raspi-ltsp-screenshot.sh
+	wget https://raw.github.com/KKSComputing/RPI-Server/master/images/Pi-ltsp-screenshot.png -O /tmp/Pi-ltsp-screenshot.png
 	cp /tmp/Pi-ltsp-screenshot.png /opt/ltsp/armhf/usr/share/pixmaps/Pi-ltsp-screenshot.png
 	cp /tmp/Raspi-ltsp-screenshot.sh /opt/ltsp/armhf/usr/local/bin/Raspi-ltsp-screenshot.sh
 	chmod +x /opt/ltsp/armhf/usr/local/bin/Raspi-ltsp-screenshot.sh
